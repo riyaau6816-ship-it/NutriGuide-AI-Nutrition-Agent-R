@@ -1,0 +1,571 @@
+/* ============================================================
+   NutriGuide — Main Stylesheet
+   Supports Light & Dark mode via [data-theme="dark"]
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --bg:           #ffffff;
+  --surface:      #f7f8fa;
+  --surface-2:    #eef0f4;
+  --border:       #e5e7eb;
+  --text:         #1f2328;
+  --text-muted:   #57606a;
+  --accent:       #3b82d4;
+  --accent-dark:  #2563ae;
+  --accent-2:     #7c5cd8;
+  --success:      #16a34a;
+  --warning:      #d97706;
+  --danger:       #dc2626;
+  --card-shadow:  0 1px 6px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --radius:       14px;
+  --radius-sm:    8px;
+  --navbar-h:     62px;
+  --transition:   0.22s ease;
+
+  /* Gradient for hero */
+  --hero-grad: linear-gradient(135deg, #1a4e8a 0%, #2d6fce 50%, #7c5cd8 100%);
+}
+
+[data-theme="dark"] {
+  --bg:           #0d1117;
+  --surface:      #161b22;
+  --surface-2:    #21262d;
+  --border:       #30363d;
+  --text:         #e6edf3;
+  --text-muted:   #8b949e;
+  --accent:       #58a6ff;
+  --accent-dark:  #388bfd;
+  --card-shadow:  0 1px 6px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+  --hero-grad: linear-gradient(135deg, #0d2045 0%, #1b3a7a 50%, #3b1f6b 100%);
+}
+
+/* ── Reset & Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Navbar ────────────────────────────────────────────────── */
+.ng-navbar {
+  background: linear-gradient(90deg, #1a3d72 0%, #2054b5 100%);
+  height: var(--navbar-h);
+  transition: background var(--transition);
+}
+
+[data-theme="dark"] .ng-navbar {
+  background: linear-gradient(90deg, #0d1f3e 0%, #122d6e 100%);
+}
+
+.brand-icon { font-size: 1.5rem; line-height: 1; }
+.brand-text  {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.3px;
+}
+.brand-badge {
+  font-size: .55rem;
+  background: var(--accent-2);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 4px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.nav-link {
+  color: rgba(255,255,255,.8) !important;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px !important;
+  font-size: .875rem;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition);
+}
+.nav-link:hover, .nav-link.active {
+  background: rgba(255,255,255,.15) !important;
+  color: #fff !important;
+}
+
+/* ── Status Banner ─────────────────────────────────────────── */
+.status-banner {
+  background: var(--warning);
+  color: #fff;
+  text-align: center;
+  font-size: .825rem;
+  padding: 5px 0;
+  margin-top: var(--navbar-h);
+}
+
+/* ── Main Content ──────────────────────────────────────────── */
+.main-content { padding-top: var(--navbar-h); }
+
+/* ── Hero Header ───────────────────────────────────────────── */
+.hero-header {
+  background: var(--hero-grad);
+  color: #fff;
+  padding: 1.5rem 0 2rem;
+}
+
+.hero-title {
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -.4px;
+}
+.accent { color: #7dd3fc; }
+.hero-sub { font-size: .9rem; opacity: .88; margin-top: .4rem; }
+
+.badge-pill {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: .78rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+.ng-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition), background var(--transition);
+  overflow: hidden;
+}
+.ng-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.12), 0 6px 24px rgba(0,0,0,.1); }
+
+.ng-card .card-header {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+  font-size: .875rem;
+  padding: .75rem 1.1rem;
+}
+.ng-card .card-body { padding: 1.1rem; }
+.ng-card .card-footer {
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Form controls ─────────────────────────────────────────── */
+.ng-input {
+  background: var(--bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.ng-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(59,130,212,.18) !important;
+  outline: none;
+}
+.ng-input::placeholder { color: var(--text-muted) !important; }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn-ng {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: opacity var(--transition), transform .1s;
+}
+.btn-ng:hover  { opacity: .9; }
+.btn-ng:active { transform: scale(.97); }
+
+.btn-send {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  font-size: 1rem;
+  transition: opacity var(--transition);
+}
+.btn-send:hover { opacity: .88; }
+.btn-send:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── Quick Chips ───────────────────────────────────────────── */
+.chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 99px;
+  padding: 3px 12px;
+  font-size: .78rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.chip:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Chat Window ───────────────────────────────────────────── */
+.chat-window {
+  height: 460px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.chat-msg {
+  display: flex;
+  gap: .65rem;
+  max-width: 88%;
+  animation: slideIn .25s ease;
+}
+.chat-msg.user { flex-direction: row-reverse; align-self: flex-end; }
+.chat-msg.assistant { align-self: flex-start; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.msg-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+.chat-msg.user .msg-avatar {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+}
+.chat-msg.assistant .msg-avatar {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+.msg-bubble {
+  padding: .6rem 1rem;
+  border-radius: 12px;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+.chat-msg.user .msg-bubble {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #fff;
+  border-bottom-right-radius: 3px;
+}
+.chat-msg.assistant .msg-bubble {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 3px;
+}
+
+/* Markdown-like formatting inside bubbles */
+.msg-bubble strong { font-weight: 700; }
+.msg-bubble ul, .msg-bubble ol { padding-left: 1.2rem; margin: .3rem 0; }
+.msg-bubble code {
+  background: rgba(0,0,0,.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: .82em;
+}
+.chat-msg.user .msg-bubble code { background: rgba(255,255,255,.2); }
+
+.msg-time {
+  font-size: .68rem;
+  color: var(--text-muted);
+  align-self: flex-end;
+  white-space: nowrap;
+  padding-bottom: 2px;
+}
+
+/* Typing indicator */
+.typing-indicator .msg-bubble { padding: .6rem 1rem; }
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  height: 18px;
+}
+.typing-dots span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typingBounce 1.2s infinite ease;
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes typingBounce {
+  0%, 100% { transform: translateY(0); opacity: .5; }
+  50%       { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Chat textarea */
+.chat-textarea {
+  resize: none;
+  background: var(--bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: .9rem;
+}
+.chat-textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(59,130,212,.15) !important;
+}
+
+/* ── Status Dot ────────────────────────────────────────────── */
+.status-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.online { background: var(--success); box-shadow: 0 0 0 2px rgba(22,163,74,.25); }
+
+/* ── Water Tracker ─────────────────────────────────────────── */
+.water-tracker { user-select: none; }
+.water-glasses {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: .5rem 0;
+}
+.glass {
+  font-size: 1.6rem;
+  cursor: pointer;
+  filter: grayscale(1) opacity(.35);
+  transition: filter .2s, transform .15s;
+}
+.glass.filled   { filter: none; }
+.glass:hover    { transform: scale(1.15); }
+.water-count    { font-weight: 700; font-size: 1rem; color: var(--accent); }
+
+/* ── Tip List ──────────────────────────────────────────────── */
+.tip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tip-list li {
+  padding: .4rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .85rem;
+  color: var(--text-muted);
+}
+.tip-list li:last-child { border-bottom: none; }
+.tip-list li strong { color: var(--text); }
+
+/* ── BMI Gauge ─────────────────────────────────────────────── */
+.bmi-gauge-wrap { display: flex; justify-content: center; }
+.bmi-gauge { width: 180px; height: 100px; }
+.gauge-number {
+  font-size: 24px;
+  font-weight: 800;
+  fill: var(--text);
+}
+.gauge-label {
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+#gaugeFill { transition: stroke-dashoffset 1s ease, stroke .6s ease; }
+
+.bmi-category-badge {
+  display: inline-block;
+  padding: 4px 18px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: .9rem;
+}
+.bmi-normal      { background: #dcfce7; color: #15803d; }
+.bmi-underweight { background: #fef9c3; color: #a16207; }
+.bmi-overweight  { background: #ffedd5; color: #c2410c; }
+.bmi-obese       { background: #fee2e2; color: #b91c1c; }
+[data-theme="dark"] .bmi-normal      { background: #14532d; color: #4ade80; }
+[data-theme="dark"] .bmi-underweight { background: #422006; color: #fcd34d; }
+[data-theme="dark"] .bmi-overweight  { background: #431407; color: #fb923c; }
+[data-theme="dark"] .bmi-obese       { background: #450a0a; color: #f87171; }
+
+/* ── Calorie Cards ─────────────────────────────────────────── */
+.calorie-card {
+  border-radius: var(--radius);
+  padding: 1rem .75rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform .15s;
+}
+.calorie-card:hover { transform: translateY(-3px); }
+.card-loss     { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+.card-maintain { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+.card-gain     { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+[data-theme="dark"] .card-loss     { background: linear-gradient(135deg, #3f2a00, #5a3d00); color: #fde68a; }
+[data-theme="dark"] .card-maintain { background: linear-gradient(135deg, #052e16, #14532d); color: #a7f3d0; }
+[data-theme="dark"] .card-gain     { background: linear-gradient(135deg, #0c1a3a, #1e3a5f); color: #bfdbfe; }
+.calorie-label { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; opacity: .7; }
+.calorie-value { font-size: 1.7rem; font-weight: 800; line-height: 1.2; }
+.calorie-sub   { font-size: .72rem; opacity: .65; }
+
+/* ── Macro Chart ───────────────────────────────────────────── */
+.macro-chart-wrap { display: flex; flex-direction: column; gap: .5rem; }
+.macro-bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 50px;
+  align-items: center;
+  gap: .6rem;
+  font-size: .82rem;
+}
+.macro-bar-bg {
+  height: 10px;
+  background: var(--surface-2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.macro-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s ease;
+}
+.bar-carbs { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+.bar-protein { background: linear-gradient(90deg, #10b981, #059669); }
+.bar-fat  { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+/* ── Calorie Range Display ─────────────────────────────────── */
+.calorie-display {
+  background: var(--accent);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: .85rem;
+  min-width: 55px;
+  text-align: center;
+}
+
+/* ── Meal Plan Output ──────────────────────────────────────── */
+.meal-plan-output {
+  min-height: 300px;
+  white-space: pre-wrap;
+  font-size: .875rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.meal-plan-output strong { color: var(--accent); }
+
+/* ── Family Member Card ────────────────────────────────────── */
+.family-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  transition: box-shadow var(--transition);
+  animation: slideIn .25s ease;
+}
+.family-card:hover { box-shadow: var(--card-shadow); }
+.family-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.family-info { flex: 1; min-width: 0; }
+.family-name { font-weight: 700; font-size: .95rem; }
+.family-meta { font-size: .78rem; color: var(--text-muted); }
+.family-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: .35rem; }
+.family-tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 1px 8px;
+  font-size: .7rem;
+  color: var(--text-muted);
+}
+
+/* ── Empty State ───────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+.empty-state .bi { color: var(--text-muted); opacity: .4; }
+
+/* ── Spinner ───────────────────────────────────────────────── */
+.ng-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Tab Sections ──────────────────────────────────────────── */
+.tab-section {
+  padding-top: 1.5rem;
+  animation: fadeIn .3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Toast overrides ───────────────────────────────────────── */
+.toast {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: .85rem;
+}
+
+/* ── Nutrition Result ──────────────────────────────────────── */
+.nutrition-result-text {
+  white-space: pre-wrap;
+  font-size: .875rem;
+  line-height: 1.7;
+}
+
+/* ── Mobile Responsive Tweaks ──────────────────────────────── */
+@media (max-width: 768px) {
+  .chat-window  { height: 360px; }
+  .hero-header  { padding: 1rem 0 1.5rem; }
+  .quick-chips  { display: none !important; }
+  .bmi-gauge    { width: 140px; }
+  .calorie-value { font-size: 1.3rem; }
+}
+
+/* ── Utility ───────────────────────────────────────────────── */
+.fw-800 { font-weight: 800; }
+.text-accent { color: var(--accent); }
